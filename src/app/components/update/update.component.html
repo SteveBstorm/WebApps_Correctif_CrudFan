@@ -1,0 +1,20 @@
+<h3>Mise à jour d'un fan</h3>
+<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+  <p>
+    Nom : <input type="text" formControlName="name">
+  </p>
+  <p>
+    Date de naissance: <input type="date" formControlName="birthdate">
+  </p>
+  <div>
+    <p>Liste des série <button type="button" (click)="addSerie()"> + </button></p>
+
+    <ul *ngIf="getSeriesArray().length > 0" formArrayName="series">
+      <li *ngFor="let s of getSeriesArray().controls; let i = index;">
+        Serie {{i+1}} : <input type="text" [formControlName]="i">
+        <button type="button" (click)="removeSerie(i)">-X-</button>
+      </li>
+    </ul>
+  </div>
+  <button type="submit" [disabled]="fg.invalid">Valider</button>
+</form>

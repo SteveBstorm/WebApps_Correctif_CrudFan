@@ -1,0 +1,9 @@
+<h3>Liste des fans</h3>
+<ol>
+  <li *ngFor="let f of listeFan; let i = index">
+  <a [routerLink]="['../detail', i]">{{f.name}}</a>
+    <a [routerLink]="['../update', i]">Update</a>
+    <button (click)="remove(i)">Supprimer</button>
+  </li>
+</ol>
+
